@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $color-cross:rgb(0,114,178);
 $color-circle:rgb(230,159,0);
 
@@ -84,14 +86,32 @@ $color-circle:rgb(230,159,0);
   .scoreX{
     color: $color-cross;
   }
+
   .scoreO{
     color: $color-circle;
   }
+
   #scoreXId{
     color: black;
   }
+
   #scoreOId{
     color: black;
   }
 
+  .setX{
+   background-color: color.adjust($color-cross, $lightness: 20%);
+
+    img {
+      filter: drop-shadow(0 0 4px $color-cross);
+    }
+  }
+
+  .setO{
+    background-color: color.adjust($color-circle, $lightness: 20%);
+
+    img {
+      filter: drop-shadow(0 0 4px $color-circle);
+    }
+  }
 }

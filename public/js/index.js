@@ -6,14 +6,19 @@ class Game {
         this.currentPlayer = "X";
     }
 
+    /**
+     * adds event listeners for each cell
+     * place image X or O in cell if mouseclick is done
+     * throws alert if winning condition is true
+     */
     startGame(){
         const tds = document.getElementsByTagName("td");
         const resetButton = document.querySelector(".reset-b");
         this.#highlightCurrentPlayer();
         
         for (const td of tds) {
-            td.addEventListener('click', (event) => {
-                console.log(event);
+            td.addEventListener('click', () => {
+                //console.log(event);
 
                     let image = td.querySelector('img');
 
@@ -23,6 +28,7 @@ class Game {
 
                         if (this.#isWinner(currentPlayerBeforeMove)){
                             alert(`Player ${currentPlayerBeforeMove} has been won!`);
+                            this.#disableBoard();
 
                             if (currentPlayerBeforeMove === "X") {
                                 this.scoreX++;
@@ -38,6 +44,11 @@ class Game {
         resetButton.addEventListener("click", () => {this.#resetBoard()})
     }
 
+    /**
+     *
+     * @param td - the table data element (cell)
+     * places X or O in the table cells
+     */
     #placeImage(td) {
 
         const el = document.getElementById(td)
@@ -60,7 +71,6 @@ class Game {
             this.#highlightCurrentPlayer();
         }
     }
-
     /**
      * Checks if the specified player has won
      * @param {string} player - The player to check for win ("X" or "O")
@@ -86,6 +96,9 @@ class Game {
         return false;
     }
 
+    /**
+     * resets board after click on button "reset"
+     */
     #resetBoard(){
         const tds = document.getElementsByTagName("td");
         for (const td of tds) {
@@ -97,6 +110,19 @@ class Game {
         this.#highlightCurrentPlayer();
     }
 
+    /**
+     * disables board after a player has won
+     */
+    #disableBoard() {
+        const tds = document.getElementsByTagName("td");
+        for (const td of tds) {
+            td.style.pointerEvents = "none";
+        }
+    }
+
+    /**
+     * highlights the current player by providing an active-class
+     */
     #highlightCurrentPlayer() {
         const scoreXDiv = document.querySelector(".scoreX");
         const scoreODiv = document.querySelector(".scoreO");
@@ -110,6 +136,7 @@ class Game {
             scoreODiv.classList.add("active-player");
         }
     }
+
 }
 
 const game = new Game();
