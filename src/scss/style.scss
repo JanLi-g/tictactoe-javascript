@@ -1,0 +1,97 @@
+$color-cross:rgb(0,114,178);
+$color-circle:rgb(230,159,0);
+
+.wrapper {
+  max-width: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 6rem;
+
+  img {
+    height: 100%;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+    height: 50%;
+  }
+
+  .board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+
+    .cells {
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+
+      .row1 td{
+        border-bottom: 1px solid black;
+      }
+
+      .row3 td{
+        border-top: 1px solid black;
+      }
+
+      .col-middle{
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+      }
+
+      td {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: white;
+      }
+    }
+  }
+
+  .reset-b {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+
+  .score{
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+  }
+
+  .active-player {
+    font-weight: bold;
+    color: green;
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scoreX{
+    color: $color-cross;
+  }
+  .scoreO{
+    color: $color-circle;
+  }
+  #scoreXId{
+    color: black;
+  }
+  #scoreOId{
+    color: black;
+  }
+
+}
